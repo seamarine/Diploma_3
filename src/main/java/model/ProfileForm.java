@@ -6,7 +6,7 @@ public class ProfileForm {
     private String email;
     private String password;
 
-    public ProfileForm(String name, String email, String password){
+    public ProfileForm(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;

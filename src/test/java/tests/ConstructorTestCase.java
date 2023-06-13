@@ -13,18 +13,17 @@ import org.junit.Test;
 import pages.MainPage;
 import pages.ProfilePage;
 
-
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static org.apache.hc.core5.http.HttpStatus.SC_OK;
 
 public class ConstructorTestCase {
 
+    MainPage main;
     private Credentials credentials;
     private UserServices userClient;
     private String accessToken;
 
-    MainPage main;
     @Before
     public void setUp() {
         userClient = new UserServices();

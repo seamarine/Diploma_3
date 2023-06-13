@@ -11,10 +11,11 @@ import org.apache.commons.lang3.RandomStringUtils;
 @AllArgsConstructor
 public class User {
 
+    public static final String EMAIL = "@gmail.com";
     private String email;
     private String password;
     private String name;
-    public static final String EMAIL = "@gmail.com";
+
     public static User randomUser() {
 
         String email = RandomStringUtils.randomAlphabetic(10) + EMAIL;

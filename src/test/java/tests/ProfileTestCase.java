@@ -1,8 +1,8 @@
 package tests;
 
-import api.pojo.User;
-import api.pojo.Credentials;
 import api.UserServices;
+import api.pojo.Credentials;
+import api.pojo.User;
 import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.junit4.Tag;
 import org.junit.After;
@@ -17,14 +17,13 @@ import static org.apache.hc.core5.http.HttpStatus.SC_OK;
 
 public class ProfileTestCase {
 
+    MainPage main;
+    ProfilePage profile;
+    LoginPage loginClass;
     private Credentials credentials;
     private UserServices userClient;
     private String accessToken;
 
-
-    MainPage main;
-    ProfilePage profile;
-    LoginPage loginClass;
     @Before
     public void setUp() {
         userClient = new UserServices();
@@ -66,6 +65,7 @@ public class ProfileTestCase {
         loginClass.checkAuthorised();
 
     }
+
     @After
     public void tearDown() {
         userClient.deleteUser(accessToken);

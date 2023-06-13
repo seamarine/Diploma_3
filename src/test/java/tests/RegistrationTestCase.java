@@ -20,14 +20,12 @@ import static org.junit.Assert.assertTrue;
 
 public class RegistrationTestCase {
 
-    private UserServices userServices;
-    private String accessToken;
-
-    private ProfileForm profile;
-
     RegistrationPage registration;
     LoginPage login;
     MainPage mainPage;
+    private UserServices userServices;
+    private String accessToken;
+    private ProfileForm profile;
 
     @Before
     public void setUp() {
@@ -59,12 +57,14 @@ public class RegistrationTestCase {
 
         profile.setPassword("false");
         registration.registerNewUser(profile);
-        assertTrue(registration.checkInvalidPasswordTextDisplayed());
-        assertTrue(registration.checkInvalidPasswordTextDisplayed());
         Credentials credentials = new Credentials(profile.getEmail(), profile.getPassword());
         accessToken = userServices.accessToken(userServices.login(credentials)
                 .assertThat()
                 .statusCode(SC_UNAUTHORIZED));
+        assertTrue(registration.checkInvalidPasswordTextDisplayed());
+        assertTrue(registration.checkInvalidPasswordTextDisplayed());
+
+
     }
 
     @After

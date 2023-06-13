@@ -1,8 +1,8 @@
 package tests;
 
+import api.UserServices;
 import api.pojo.Credentials;
 import api.pojo.User;
-import api.UserServices;
 import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.junit4.Tag;
 import org.junit.After;
@@ -10,17 +10,18 @@ import org.junit.Before;
 import org.junit.Test;
 import pages.MainPage;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.url;
 import static org.apache.hc.core5.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertTrue;
+import static pages.MainPage.URL;
 
 public class LoginTestCase {
+    MainPage main;
     private Credentials credentials;
     private UserServices userClient;
     private String accessToken;
-
-    MainPage main;
 
     @Before
     public void setUp() {
@@ -31,7 +32,7 @@ public class LoginTestCase {
         accessToken = userClient.accessToken(userClient.register(user)
                 .assertThat()
                 .statusCode(SC_OK));
-        main = open(MainPage.URL, MainPage.class);
+        main = open(URL, MainPage.class);
     }
 
     @Tag("LoginTestCase")
@@ -47,7 +48,7 @@ public class LoginTestCase {
 
         boolean button = main.checkoutButtonVisible();
 
-        webdriver().shouldHave(url("http://stellarburgers.nomoreparties.site/"));
+        webdriver().shouldHave(url(URL));
         assertTrue("Button invisible", button);
 
     }
@@ -65,7 +66,7 @@ public class LoginTestCase {
 
         boolean button = main.checkoutButtonVisible();
 
-        webdriver().shouldHave(url("http://stellarburgers.nomoreparties.site/"));
+        webdriver().shouldHave(url(URL));
         assertTrue("Button invisible", button);
     }
 
@@ -84,7 +85,7 @@ public class LoginTestCase {
 
         boolean button = main.checkoutButtonVisible();
 
-        webdriver().shouldHave(url("http://stellarburgers.nomoreparties.site/"));
+        webdriver().shouldHave(url(URL));
         assertTrue("Button invisible", button);
     }
 
@@ -103,7 +104,7 @@ public class LoginTestCase {
 
         boolean button = main.checkoutButtonVisible();
 
-        webdriver().shouldHave(url("http://stellarburgers.nomoreparties.site/"));
+        webdriver().shouldHave(url(URL));
         assertTrue("Button invisible", button);
     }
 

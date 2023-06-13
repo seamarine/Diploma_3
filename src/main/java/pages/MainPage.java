@@ -13,29 +13,29 @@ public class MainPage {
 
     public static final String URL = "http://stellarburgers.nomoreparties.site/";
 
-    @FindBy(how = How.CSS,using = ".AppHeader_header__logo__2D0X2 ~ a")
-    protected SelenideElement linkToProfilePage;
+    @FindBy(how = How.CSS, using = ".AppHeader_header__logo__2D0X2 ~ a")
+    private SelenideElement linkToProfilePage;
 
     @FindBy(how = How.XPATH, using = "//p[text()='Конструктор']")
-    protected SelenideElement constructorLabel;
+    private SelenideElement constructorLabel;
 
     @FindBy(how = How.XPATH, using = ".//span [@class='text text_type_main-default'][text()='Булки']")
-    protected SelenideElement bunsTab;
+    private SelenideElement bunsTab;
 
     @FindBy(how = How.XPATH, using = ".//span[text()='Булки']")
-    protected SelenideElement bunsTitle;
+    private SelenideElement bunsTitle;
 
     @FindBy(how = How.XPATH, using = ".//span [@class='text text_type_main-default'][text()='Соусы']")
-    protected SelenideElement saucesTab;
+    private SelenideElement saucesTab;
 
     @FindBy(how = How.XPATH, using = ".//span[text()='Соусы']")
-    protected SelenideElement saucesTitle;
+    private SelenideElement saucesTitle;
 
     @FindBy(how = How.XPATH, using = ".//span [@class='text text_type_main-default'][text()='Начинки']")
-    protected SelenideElement fillingsTab;
+    private SelenideElement fillingsTab;
 
     @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']")
-    protected SelenideElement fillingsTitle;
+    private SelenideElement fillingsTitle;
 
     @FindBy(how = How.XPATH, using = ".//button [text()='Войти в аккаунт']")
     private SelenideElement loginButton;
@@ -59,61 +59,50 @@ public class MainPage {
     }
 
     @Step("Перейти на страницу профиля")
-    public LoginPage  goToProfilePage(){
+    public LoginPage goToProfilePage() {
         linkToProfilePage.click();
         return page(LoginPage.class);
     }
 
     @Step("Нажать на раздел Булки")
-    public MainPage goToBunsClick(){
+    public MainPage goToBunsClick() {
         bunsTab.click();
         return page(MainPage.class);
     }
 
     @Step("Проверка видимости раздела Булки")
     public boolean checkBunsClickOpen() {
-        if (bunsTitle.getAttribute("class").contains("tab_tab__1SPyG tab_tab_type_current__2BEPc")) {
-            return true;
-        } else {
-            return false;
-        }
+        return bunsTitle.getAttribute("class").contains("tab_tab__1SPyG tab_tab_type_current__2BEPc");
     }
 
     @Step("Нажать на раздел Соусы")
-    public MainPage goToSaucesClick(){
+    public MainPage goToSaucesClick() {
         saucesTab.click();
         return page(MainPage.class);
     }
 
     @Step("Проверка видимости раздела Соусы")
-    public boolean checkSaucesClickOpen(){
-        if (saucesTitle.getAttribute("class").contains("tab_tab__1SPyG tab_tab_type_current__2BEPc")) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean checkSaucesClickOpen() {
+        return saucesTitle.getAttribute("class").contains("tab_tab__1SPyG tab_tab_type_current__2BEPc");
     }
 
     @Step("Нажать на раздел Начинки")
-    public MainPage goToFillingsClick(){
+    public MainPage goToFillingsClick() {
         fillingsTab.click();
         return page(MainPage.class);
     }
 
     @Step("Проверка видимости раздела Начинки")
-    public boolean checkFillingsClickOpen(){
-        if (fillingsTitle.getAttribute("class").contains("tab_tab__1SPyG tab_tab_type_current__2BEPc")) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean checkFillingsClickOpen() {
+        return fillingsTitle.getAttribute("class").contains("tab_tab__1SPyG tab_tab_type_current__2BEPc");
     }
 
     @Step("Проверка видимости блока Конструктор")
-    public LoginPage checkConstructorBlock(){
+    public LoginPage checkConstructorBlock() {
         constructorLabel.shouldBe(visible);
         return page(LoginPage.class);
     }
+
     @Step("Отображение кнопки Оформить заказ")
     public boolean checkoutButtonVisible() {
         checkout.is(Condition.visible);

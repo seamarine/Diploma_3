@@ -1,7 +1,7 @@
 package api;
 
-import api.pojo.User;
 import api.pojo.Credentials;
+import api.pojo.User;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 
@@ -43,6 +43,7 @@ public class UserServices {
     public String getToken(String token) {
         return token.substring(7);
     }
+
     @Step("Удалить пользователя по токену")
     public void deleteUser(String token) {
         getBaseSpec

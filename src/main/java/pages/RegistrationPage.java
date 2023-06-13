@@ -13,19 +13,19 @@ public class RegistrationPage {
     public static final String URL = "http://stellarburgers.nomoreparties.site/register";
 
     @FindBy(how = How.XPATH, using = "//form/fieldset[1]/div/div/input")
-    protected SelenideElement nameInput;
+    private SelenideElement nameInput;
 
     @FindBy(how = How.XPATH, using = "//form/fieldset[2]/div/div/input")
-    protected SelenideElement emailInput;
+    private SelenideElement emailInput;
 
     @FindBy(how = How.CSS, using = "input[name=\"Пароль\"]")
-    protected SelenideElement passwordInput;
+    private SelenideElement passwordInput;
 
     @FindBy(how = How.CSS, using = ".Auth_form__3qKeq > button")
-    protected SelenideElement registrationButton;
+    private SelenideElement registrationButton;
 
     @FindBy(how = How.CSS, using = ".input__error ")
-    protected SelenideElement invalidPasswordText;
+    private SelenideElement invalidPasswordText;
 
     @FindBy(how = How.XPATH, using = ".//a[text()='Войти']")
     private SelenideElement loginLink;

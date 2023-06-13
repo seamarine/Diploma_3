@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import model.ProfileForm;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -14,16 +13,16 @@ public class LoginPage {
 
 
     @FindBy(how = How.CSS, using = "[name=\"name\"]")
-    protected SelenideElement emailInput;
+    private SelenideElement emailInput;
 
     @FindBy(how = How.XPATH, using = ".//button [text()='Войти']")
     private SelenideElement loginButton;
 
     @FindBy(how = How.CSS, using = ".Auth_login__3hAey > h2")
-    protected SelenideElement loginHeader;
+    private SelenideElement loginHeader;
 
     @FindBy(how = How.CSS, using = "[name=\"Пароль\"]")
-    protected SelenideElement passwordInput;
+    private SelenideElement passwordInput;
 
     @FindBy(how = How.XPATH, using = ".//fieldset[1]//input")
     private SelenideElement inputName;
@@ -119,7 +118,6 @@ public class LoginPage {
     public void checkAuthorised() {
         loginButton.shouldBe(Condition.visible);
     }
-
 
 
 }
