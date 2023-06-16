@@ -12,6 +12,8 @@ import pages.LoginPage;
 import pages.MainPage;
 import pages.ProfilePage;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Selenide.*;
 import static org.apache.hc.core5.http.HttpStatus.SC_OK;
 
@@ -25,7 +27,12 @@ public class ProfileTestCase {
     private String accessToken;
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
+
+        System.getProperties().load(ClassLoader.getSystemResourceAsStream("browsers.properties"));
+        String Browser = System.getProperty("browser");
+        System.setProperty("selenide.browser", Browser);
+
         userClient = new UserServices();
         User user = User.randomUser();
         credentials = Credentials.getCredentials(user);

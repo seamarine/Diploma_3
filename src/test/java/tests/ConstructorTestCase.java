@@ -13,19 +13,28 @@ import org.junit.Test;
 import pages.MainPage;
 import pages.ProfilePage;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static org.apache.hc.core5.http.HttpStatus.SC_OK;
 
 public class ConstructorTestCase {
 
+
     MainPage main;
     private Credentials credentials;
     private UserServices userClient;
     private String accessToken;
 
+
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
+
+        System.getProperties().load(ClassLoader.getSystemResourceAsStream("browsers.properties"));
+        String Browser = System.getProperty("browser");
+        System.setProperty("selenide.browser", Browser);
+
         userClient = new UserServices();
         User user = User.randomUser();
         credentials = Credentials.getCredentials(user);
@@ -46,6 +55,7 @@ public class ConstructorTestCase {
     @Test
     @DisplayName("Проверка перехода по клику на «Конструктор» и на логотип Stellar Burgers")
     public void checkingTransitionClickOnConstructorAndOnLogo() {
+
 
         main.goToProfilePage();
 

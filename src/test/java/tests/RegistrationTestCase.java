@@ -13,6 +13,8 @@ import pages.LoginPage;
 import pages.MainPage;
 import pages.RegistrationPage;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Selenide.*;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
@@ -28,7 +30,12 @@ public class RegistrationTestCase {
     private ProfileForm profile;
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
+
+        System.getProperties().load(ClassLoader.getSystemResourceAsStream("browsers.properties"));
+        String Browser = System.getProperty("browser");
+        System.setProperty("selenide.browser", Browser);
+
         userServices = new UserServices();
         mainPage = open(MainPage.URL, MainPage.class);
         registration = open(RegistrationPage.URL, RegistrationPage.class);
